@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Events Demonstration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container" id="contentArea">
+
+        <h1 id="heading">Welcome to My Webpage</h1>
+
+        <img
+            id="displayImage"
+            src="https://placehold.co/500x300/1e3a5f/ffffff?text=Original+Image"
+            alt="Original image">
+
+        <p>Move your mouse over this area to change the image and heading.</p>
+
+    </div>
+
+    <script>
+        const contentArea = document.getElementById("contentArea");
+        const heading = document.getElementById("heading");
+        const displayImage = document.getElementById("displayImage");
+
+        // Store the original content
+        const originalHeading = "Welcome to My Webpage";
+        const originalImage =
+            "https://placehold.co/500x300/1e3a5f/ffffff?text=Original+Image";
+
+        // Change content when the mouse moves over the area
+        contentArea.addEventListener("mouseover", function () {
+            heading.textContent = "You Are Exploring!";
+            displayImage.src =
+                "https://placehold.co/500x300/218c74/ffffff?text=Alternate+Image";
+            displayImage.alt = "Alternate image";
+        });
+
+        // Restore the original content when the mouse leaves
+        contentArea.addEventListener("mouseout", function (event) {
+            if (!contentArea.contains(event.relatedTarget)) {
+                heading.textContent = originalHeading;
+                displayImage.src = originalImage;
+                displayImage.alt = "Original image";
+            }
+        });
+    </script>
+
+</body>
+</html>
