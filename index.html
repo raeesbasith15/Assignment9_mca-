@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Background Color</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Background Color Changer</h1>
+        <p>Click the button to change the background color.</p>
+
+        <button id="changeBtn">Change Background</button>
+
+        <p id="colorCode">Current Color: #f0f4f8</p>
+    </div>
+
+    <script>
+        const button = document.getElementById("changeBtn");
+        const colorCode = document.getElementById("colorCode");
+
+        button.addEventListener("click", function () {
+            // Generate a random hexadecimal color
+            const randomColor = "#" +
+                Math.floor(Math.random() * 16777215)
+                    .toString(16)
+                    .padStart(6, "0");
+
+            // Apply the color to the webpage
+            document.body.style.backgroundColor = randomColor;
+
+            // Display the generated color
+            colorCode.textContent = "Current Color: " + randomColor;
+        });
+    </script>
+
+</body>
+</html>
